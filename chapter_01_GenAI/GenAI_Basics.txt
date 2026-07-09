@@ -1,0 +1,148 @@
+What Is AI Engineering?
+ - AI Engineering => building applications on top of existing foundation models
+
+Base Model
+ - Also called a "foundation model" in some contexts, though there's a distinction.
+ - It is a pre-trained model that has learned general patterns from large amounts of data 
+   but hasn't been fine-tuned for any specific task.
+
+Foundation Models
+- Handle multiple modalities:- Text, Images, Video, Audio
+
+What is LLM?
+ - Large-language model is a model which is trained on the data with more than 1 billion parameters 
+ - if the parameters are less than one billion, we call them a small language model
+
+What is Parameters?
+ - By using the parameters, a large language model will be able to predict the next token 
+
+Langauge Model 
+ - Language model is like an autocomplete which predicts the next output based on the input asked. 
+ - basically, do this by using the concept of transformer 
+
+What is a token ?
+ - Token is smallest unit which the language model understands
+ - Its small chunk of characters which LLM gives weightage while converting them to string
+ - by using the transformer or weights it can predict the next word 
+
+
+Closed Source Models -  their whole source code, weights, param are not public in nature 
+
+1. GPT 5.5
+2. Claude Sonnet 5, Opus 4.8, Fable 5
+3. Gemini
+
+Open Source Models -  their whole source code, weights, param are public in nature 
+
+1. DEEPSEEK
+2. Kimi K2.5
+3. Qwen
+4. Mistral - OS/Paid
+
+AI Coding Assistant
+
+1. Codex
+2. GHCP
+3. CommandCode
+4. OpenCode
+5. Claude Code
+6. KIRO
+
+
+What is a Hugging Face?
+ - it is like a GitHub for models , list of opensoure models
+
+Focus
+ - We are not machine learning engineers. 
+ - We will never create our foundation model. We are only going to use them.
+
+What is Github Copilot 
+ - Coding AI Assitance Agent.
+ - It uses the foundation model to help you
+
+Perplexity AI  
+ -> Curation of the different Foundation modles
+
+ChatGPT 
+ ->  It is just a web chat with the foundation model GPT 5.5
+
+Visual Studio Code
+
+ - Normal IDE -  which can help you to generate a JavaScript / Python code / Java code 
+
+Cursor | Antigravity | Windsurf |  
+ -> Agentic Coding IDE / AI Powered IDE
+ -> Helps code, chat agentic way using build-in LLMs.
+
+Command code installation
+1. Pre-requisite: Install Node.js first 
+2. Open the Terminal or Powershell
+3. npm i -g command-code@latest
+4. cmdc login (for windows, cmd for mac)
+5. cmdc
+
+
+Problem with the large language model 
+1. Hallucinations
+2. Knowledge cutoff
+
+Hallucinations (LLMs “Making Things Up”)
+ - A hallucination occurs when an AI model produces confident but factually incorrect or completely fabricated output
+ - Even though the information does not exist in the system, logs, API, or requirements.
+ - The key danger: **the answer sounds correct**.
+
+Why Hallucinations Happens?
+ - Pattern completion - model predicts 'what usually comes next'
+ - Missing context - AI fills gaps & guesses
+ - Over-generalization - Uses similar app reference it has seen
+ - No grounding - not connected to real product data
+ - Over-trusting prompts - User assumes AI knows system
+
+
+
+Anti-Hallucination Rules
+ - ROLE: You are a QA assistant operating under strict verification rules.
+ - SCOPE OF KNOWLEDGE : You may ONLY use information explicitly provided in: 
+    - PRD
+    - API documentation
+    - Logs
+    - Screenshots
+    - Test data
+    - User input
+ - STRICT RULES (MANDATORY)
+ - DO NOT invent features, APIs, error codes, UI elements, or behavior.
+ - DO NOT assume default or "typical" system behavior.
+ - If information is missing or unclear, respond with: "Insufficient information to determine."
+ - Every assertion must be traceable to provided input.
+ - If a detail is inferred, label it explicitly as: "Inference (low confidence)".
+ - Output must be deterministic and repeatable.
+ - PROCESS YOU MUST FOLLOW
+    - Step 1: Extract verifiable facts from the input. 
+    - Step 2: List unknown or missing information. 
+    - Step 3: Generate output ONLY from Step 1 facts. 
+    - Step 4: Perform a self-check for hallucinations or contradictions. 
+    - OUTPUT FORMAT (STRICT)
+ - Verified Facts:
+    -Missing / Unknown Information:
+    -Generated Output:
+    -Self-Validation Check:
+    -If you cannot complete a step, stop and report why
+
+Prevent Hallucinations (Best Practices)
+ - **Proper prompts** 
+ - Rules
+ - Role, Context, Constraints (examples)
+ - RAG ? (discuss later) -> 
+
+Inconsistencies (AI Contradicting Itself)
+ - An inconsistency occurs when the AI gives different or conflicting answers for the same requirement, test case, or scenario
+   - In the same response
+   - Across multiple runs
+   - Across different prompts
+
+QA Example 1 – Inconsistent Test Cases
+ - Prompt 1: “Write test cases for login failure.”
+ - AI Output: Expected Result: Error message appears
+ - Prompt 2 (Same input, new run)
+ - AI Output: Expected Result: User redirected to forgot password
+ - Problem: Same scenario → different expected behavior

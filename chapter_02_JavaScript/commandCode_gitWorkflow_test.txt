@@ -1,4 +1,0 @@
-test sample code push with github windows authorization using powershell
-test sample code push with github windows authorization using command code
-test sample code git workflow & push to remote repo with command code with github windows authorization
-test sample code git workflow & push to remote repo with command code with github token authentication

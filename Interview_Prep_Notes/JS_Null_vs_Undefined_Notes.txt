@@ -1,0 +1,38 @@
+JavaScript Null vs Undefined
+
+In JavaScript, both null and undefined represent a lack of value, but they are used in entirely different contexts.undefined means a variable has been declared but has not yet been assigned a value. The JavaScript engine sets this automatically.null is an intentional assignment representing the deliberate absence of any object value. You explicitly set a variable to null to mark it as empty
+
+Key DifferencesFeatureundefinednullMeaningValue is completely missing or unassigned.Value is intentionally blank or empty.Assigned byAutomatically assigned by the JavaScript engine.Explicitly assigned by the developer in code.typeof Result"undefined""object" (This is a legacy language bug).Math OperationsEvaluates to NaN (Not a Number).Evaluates to 0.JSON BehaviorRemoved entirely during JSON.stringify().Preserved faithfully as null
+
+Common Scenarios for undefinedUninitialized Variables: Declaring a variable without setting a value.javascriptlet user; 
+console.log(user); // undefined
+Use code with caution.Missing Function Arguments: When a function parameter is expected but not provided.javascriptfunction greet(name) { console.log(name); }
+greet(); // undefined
+
+Non-Existent Properties: Accessing an object key or array index that does not exist.javascriptconst car = { brand: "Tesla" };
+console.log(car.model); // undefined
+Use code with caution.Common Scenarios for nullExplicit Reset: Emptying out a variable that previously held data.javascriptlet currentSession = { id: 102 };
+currentSession = null; // Intentional cleanup
+
+API and DOM Responses: Native JavaScript methods return null if an object cannot be found.javascript// Returns null if the element doesn't exist on the page
+const button = document.querySelector("#submit-btn"); 
+
+Comparing EqualityBecause both values represent "nothingness", they behave uniquely when compared:Loose Equality (==): Returns true because JavaScript coerces their types to check if they both mean "empty".javascriptconsole.log(null == undefined); // true
+
+let isOnline = true;            // true is a boolean literal
+let numbers = [10, 20, 30];     // [10, 20, 30] is an array literal
+let config = { theme: "dark" }; // { theme: "dark" } is an object literal
+
+Comparing EqualityBecause both values represent "nothingness", they behave uniquely when compared:Loose Equality (==): Returns true because JavaScript coerces their types to check if they both mean "empty".javascriptconsole.log(null == undefined); 
+
+Strict Equality (===): Returns false because their underlying data types are completely different.javascriptconsole.log(null === undefined); // false
+
+Modern Handling: The Nullish Coalescing Operator (??)If you want to provide a default fallback value for both null and undefined without accidentally catching other falsy values (like 0 or ""), use the nullish coalescing operator:javascriptlet score = 0; // Valid falsy number
+let defaultScore = score ?? 10; // returns 0
+
+let enteredName = null;
+let displayName = enteredName ?? "Guest"; // returns "Guest"
+
+
+
+
